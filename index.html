@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wheel of Fame</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <div class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">Hall of Moments</p>
+      <h1>Wheel of <span>Fame</span></h1>
+      <p class="subtitle">Aggiungi i nomi, gira la ruota e lascia che il destino scelga. Andrea ed Elia sono sempre in gioco e non possono uscire mai.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel panel-wheel" aria-label="Ruota dei nomi">
+        <div class="wheel-wrap">
+          <div class="pointer" aria-hidden="true"></div>
+          <canvas id="wheel" width="560" height="560" aria-label="Ruota della fama"></canvas>
+          <div class="hub">
+            <span class="hub-label">SPIN</span>
+          </div>
+        </div>
+        <div class="wheel-actions">
+          <button id="spinBtn" class="btn btn-spin" type="button">Gira la ruota</button>
+          <button id="shuffleBtn" class="btn btn-ghost" type="button">Mescola colori</button>
+        </div>
+        <div id="resultBox" class="result-box" aria-live="polite">
+          <p class="result-kicker">Ultimo risultato</p>
+          <p id="resultText" class="result-text">Nessuno ancora. Gira la ruota.</p>
+        </div>
+      </section>
+
+      <section class="panel panel-controls" aria-label="Gestione nomi">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow small">Partecipanti</p>
+            <h2>Gestisci la lista</h2>
+          </div>
+          <div class="count-badge"><span id="nameCount">0</span> nomi</div>
+        </div>
+
+        <form id="addNameForm" class="add-row" autocomplete="off">
+          <label for="nameInput" class="sr-only">Aggiungi nome</label>
+          <input id="nameInput" type="text" maxlength="24" placeholder="Scrivi un nome..." />
+          <button class="btn btn-add" type="submit">Aggiungi</button>
+        </form>
+
+        <div class="rules-card">
+          <h3>Regole attive</h3>
+          <ul>
+            <li><strong>Andrea</strong> ed <strong>Elia</strong> sono sempre presenti.</li>
+            <li>Non possono essere rimossi dalla lista.</li>
+            <li>Se rimane solo Andrea o solo Elia, la ruota non può partire: deve esserci almeno un altro nome.</li>
+          </ul>
+        </div>
+
+        <div class="list-wrap">
+          <div class="list-head">
+            <h3>Lista nomi</h3>
+            <button id="clearExtraBtn" class="btn-text" type="button">Rimuovi extra</button>
+          </div>
+          <ul id="nameList" class="name-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Wheel of Fame • progettato per serate, scelte rapide e momenti iconici.</p>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
